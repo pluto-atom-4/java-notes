@@ -47,6 +47,39 @@ public class StringTests {
   }
 
   @Test
+  public void returnInteger() {
+    String str = "abcd'd -12334";
+    String expect = "-12334";
+
+    assertThat(str.toLowerCase().replaceAll("[^-0-9]", "")).isEqualTo(expect);
+  }
+
+  @Test
+  public void returnSplitWords() {
+    String str = "-12334 abcd'd";
+    String expect = "-12334";
+
+    assertThat(str.split(" ")).hasSize(2);
+    assertThat(str.split(" ")[0]).isEqualTo(expect);
+  }
+
+  @Test
+  public void returnNoSplit() {
+    String str = "    ";
+
+    assertThat(str.split(" ")).hasSize(0);
+  }
+
+  @Test
+  public void returnTrimmedWhiteSpaces() {
+    String str = "    -12345 abcd";
+    String expect = "-12345 ";
+    System.out.println(str.trim());
+    assertThat(str.trim().split(" ")).hasSize(2);
+    assertThat(str.trim().split(" ")[0]).isEqualTo(expect);
+  }
+
+  @Test
   public void returnTrueForEmpty() {
     assertThat("".isEmpty()).isTrue();
   }
