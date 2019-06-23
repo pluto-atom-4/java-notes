@@ -96,4 +96,17 @@ public class StringTests {
     assertThat(s.substring(0, 0)).isEqualTo("");
     assertThat("bb".substring(0, 1)).isEqualTo("b");
   }
+
+  @Test
+  public void shouldSwapNoTemp() {
+    String a = "Black";
+    String b = "White";
+
+    b = b + a;
+    a = b.substring(0, b.length() - a.length());
+    b = b.substring(a.length());
+
+    assertThat(a).isEqualTo("White");
+    assertThat(b).isEqualTo("Black");
+  }
 }

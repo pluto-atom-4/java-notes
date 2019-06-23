@@ -17,4 +17,17 @@ public class IntegerTests {
     int i = 100;
     assertThat(Integer.toBinaryString(i)).isEqualTo("1100100");
   }
+
+  @Test
+  public void shouldSwapInPlace() {
+    int a = 2;
+    int b = 3;
+
+    b = a + b;
+    a = b - a;  // => b
+    b = b - a;
+
+    assertThat(a).isEqualTo(3);
+    assertThat(b).isEqualTo(2);
+  }
 }
