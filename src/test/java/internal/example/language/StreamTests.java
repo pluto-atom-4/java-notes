@@ -17,6 +17,7 @@ public class StreamTests {
   @Test
   public void returnGcd() {
     var numbers = List.of(9, 6);
+    assertThat(numbers.stream().reduce(1, (x, y) -> x * (y / gcd(x, y)))).isEqualTo(18);
   }
 
   private int gcd(int x, int y) {
