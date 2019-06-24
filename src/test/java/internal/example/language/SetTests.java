@@ -48,4 +48,17 @@ public class SetTests {
     }
     assertThat(arr).containsExactlyInAnyOrder('a', 'b', 'c');
   }
+
+  @Test
+  public void shouldAddIntArray() {
+    int[] a = {0, 1, 2};
+    int[] b = {1, 2, 3};
+    int[] c = {0, 1, 2};
+    Set<int[]> set = new HashSet<>();
+    set.add(a);
+    set.add(b);
+    assertThat(set).hasSize(2);
+    set.add(c);
+    assertThat(set).hasSize(3);
+  }
 }

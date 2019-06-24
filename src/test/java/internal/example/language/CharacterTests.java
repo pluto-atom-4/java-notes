@@ -21,4 +21,12 @@ public class CharacterTests {
     char c = 'a';
     assertThat(String.valueOf(c)).isEqualTo("a");
   }
+
+  @Test
+  public void shouldXor() {
+    char a = 'a';
+    char b = 'a';
+
+    assertThat(a ^ b).isEqualTo(0);
+  }
 }
