@@ -46,4 +46,15 @@ public class ListTests {
     assertThat(nums).containsExactly(1, 2, 3);
 
   }
+
+  @Test
+  public void returnEmptyList() {
+    List<Integer> list = new ArrayList<>();
+    list.add(1);
+    list.add(2);
+    assertThat(list.size()).isEqualTo(2);
+    list.remove(1);
+    list.remove(0);
+    assertThat(list.isEmpty()).isTrue();
+  }
 }
