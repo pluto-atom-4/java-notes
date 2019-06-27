@@ -41,4 +41,11 @@ public class MapTests {
       assertThat(l.toArray(new String[0])).hasSize(2);
     }
   }
+
+  @Test
+  public void shouldReturnDefaultValue() {
+    Map<Character, Integer> map = new HashMap<>();
+    map.put('c', map.getOrDefault('c', 4));
+    assertThat(map.get('c')).isEqualTo(4);
+  }
 }
