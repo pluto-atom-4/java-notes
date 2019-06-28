@@ -29,4 +29,14 @@ public class CharacterTests {
 
     assertThat(a ^ b).isEqualTo(0);
   }
+
+  @Test
+  public void shouldReturnUpperCase() {
+    char c = 'a';
+    assertThat(Character.toUpperCase(c)).isEqualTo('A');
+
+    char n = '3';
+    assertThat(Character.toUpperCase(n)).isEqualTo('3');
+  }
+
 }
