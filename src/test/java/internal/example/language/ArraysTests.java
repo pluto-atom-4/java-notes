@@ -2,6 +2,7 @@ package internal.example.language;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -54,5 +55,27 @@ public class ArraysTests {
     assertThat(nums[0]).containsExactly(0,2);
     assertThat(nums[1]).containsExactly(1,2);
     assertThat(nums[2]).containsExactly(2,3);
+  }
+
+  @Test
+  public void shouldReturnShallowCopy() {
+    String[] strings = {"abc", "def", "ghi"};
+    List<String> list = Arrays.asList(strings);
+
+    list.set(0, "cba"); // updates the strings data as list references to the one.
+
+    assertThat(strings[0]).isNotEqualTo("abc");
+    assertThat(strings[0]).isEqualTo("cba");
+  }
+
+  @Test
+  public void shouldReturnDeepCopy() {
+    String[] strings = {"abc", "def", "ghi"};
+    List<String> list = new ArrayList<>(Arrays.asList(strings));
+
+    list.set(0, "cba"); // no side effect on the strings.
+
+    assertThat(strings[0]).isNotEqualTo("cba");
+    assertThat(strings[0]).isEqualTo("abc");
   }
 }
