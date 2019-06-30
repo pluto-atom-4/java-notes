@@ -109,4 +109,19 @@ public class StringTests {
     assertThat(a).isEqualTo("White");
     assertThat(b).isEqualTo("Black");
   }
+
+  @Test
+  public void shouldTreatUnicodeAsChar() {
+    StringBuffer sb = new StringBuffer();
+    for (char c = 'a'; c < 'd'; c++) {
+      sb.append(c);
+    }
+    sb.append('\u00a5');    // Japanese Yen symbol
+    sb.append('\u01FC');    // Roman AE with acute accent
+    sb.append('\u0391');    // GREEK Capital Alpha
+    sb.append('\u03A9');    // GREEK Capital Omega
+
+    assertThat(sb.toString()).isEqualTo("abc¥ǼΑΩ");
+    assertThat(sb.toString().toCharArray()).containsExactly('a','b','c','¥','Ǽ','Α','Ω');
+  }
 }
