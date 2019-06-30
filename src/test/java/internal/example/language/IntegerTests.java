@@ -30,4 +30,16 @@ public class IntegerTests {
     assertThat(a).isEqualTo(3);
     assertThat(b).isEqualTo(2);
   }
+
+  @Test
+  public void returnIntegerFromCharacter() {
+    char c= '6';
+    assertThat(Integer.valueOf(c)).isInstanceOf(Integer.class);
+  }
+
+  @Test
+  public void returnIntegerFromString() {
+    String str = "26";
+    assertThat(Integer.valueOf(str)).isInstanceOf(Integer.class);
+  }
 }
