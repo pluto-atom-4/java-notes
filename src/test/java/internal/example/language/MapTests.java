@@ -2,6 +2,7 @@ package internal.example.language;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,10 +27,11 @@ public class MapTests {
   @Test
   public void shouldReturnEntrySet() {
     Map<Character, Integer> map = Map.of('c', 1, 'b', 0);
-    assertThat(map.entrySet().size()).isEqualTo(2);
     for (Map.Entry entry : map.entrySet()) {
       System.out.printf("%s -> %d %n", entry.getKey(), entry.getValue());
     }
+    assertThat(map.entrySet().size()).isEqualTo(2);
+    assertThat(map).containsEntry('c', 1).containsEntry('b', 0);
   }
 
   @Test
@@ -37,9 +39,9 @@ public class MapTests {
     Map<Character, List<String>> map = Map.of('c', List.of("abc", "bca"),
       'b', List.of("gef", "efg"));
 
-    for (List<String> l : map.values()) {
-      assertThat(l.toArray(new String[0])).hasSize(2);
-    }
+    assertThat(map)
+      .containsValues(Arrays.asList("abc", "bca"))
+      .containsValues(Arrays.asList("gef", "efg"));
   }
 
   @Test

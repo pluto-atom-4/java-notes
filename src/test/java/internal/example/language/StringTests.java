@@ -72,11 +72,11 @@ public class StringTests {
 
   @Test
   public void returnTrimmedWhiteSpaces() {
-    String str = "    -12345 abcd";
-    String expect = "-12345";
+    String str = "    12345 abcd";
+    String expect = "12345";
     System.out.println(str.trim());
     assertThat(str.trim().split(" ")).hasSize(2);
-    assertThat(str.trim().split(" ")[0]).isEqualTo(expect);
+    assertThat(str.trim().split(" ")[0]).containsOnlyDigits().isEqualTo(expect);
   }
 
   @Test
