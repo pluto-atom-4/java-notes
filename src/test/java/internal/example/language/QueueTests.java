@@ -13,6 +13,17 @@ public class QueueTests {
   public void shouldReturnSize() {
     Deque<Integer> que = new LinkedList<>();
 
+    que.add(10);
+    que.add(5);
+    que.add(1);
+
+    assertThat(que).hasSize(3);
+  }
+
+  @Test
+  public void shouldReturnEitherEnd() {
+    Deque<Integer> que = new LinkedList<>();
+
     que.addFirst(10);
     que.add(5);
     que.addLast(1);
