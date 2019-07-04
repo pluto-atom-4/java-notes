@@ -39,4 +39,12 @@ public class CharacterTests {
     assertThat(Character.toUpperCase(n)).isEqualTo('3');
   }
 
+  @Test
+  public void shouldReturnAtoD() {
+    StringBuilder sb = new StringBuilder();
+    for (char c = 'A'; c < 'E'; c++) {
+      sb.append(c);
+    }
+    assertThat(sb.toString()).isEqualTo("ABCD");
+  }
 }
