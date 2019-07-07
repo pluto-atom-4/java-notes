@@ -28,7 +28,7 @@ public class StringTests {
   }
 
   @Test
-  public void returnIdexOfCommonPrefix() {
+  public void returnIndexOfCommonPrefix() {
 
     assertThat("flower".indexOf("flow")).isEqualTo(0);
     assertThat("flower".indexOf("low")).isEqualTo(1);
