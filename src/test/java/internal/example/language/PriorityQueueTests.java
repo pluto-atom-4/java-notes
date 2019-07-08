@@ -19,4 +19,16 @@ public class PriorityQueueTests {
     assertThat(pq.remove()).isEqualTo("blue");
     assertThat(pq.remove()).isEqualTo("green");
   }
+
+  @Test
+  public void shouldReturnItemsWithIterate() {
+    PriorityQueue<Integer> pq = new PriorityQueue<>(5);
+    pq.add(1);
+    pq.add(3);
+    pq.add(2);
+
+    while (!pq.isEmpty()) {
+      assertThat(pq.remove()).isIn(1, 2, 3);
+    }
+  }
 }

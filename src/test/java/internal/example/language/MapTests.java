@@ -50,4 +50,11 @@ public class MapTests {
     map.put('c', map.getOrDefault('c', 4));
     assertThat(map.get('c')).isEqualTo(4);
   }
+
+  @Test
+  public void shouldReturnKeys() {
+    Map<Character, Integer> map = Map.of('c', 1, 'b', 0, 'a', 3);
+    assertThat(map.keySet()).hasSize(3)
+      .containsExactly('a','b','c');
+  }
 }
