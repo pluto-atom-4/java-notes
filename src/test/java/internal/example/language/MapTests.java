@@ -55,6 +55,6 @@ public class MapTests {
   public void shouldReturnKeys() {
     Map<Character, Integer> map = Map.of('c', 1, 'b', 0, 'a', 3);
     assertThat(map.keySet()).hasSize(3)
-      .containsExactly('a','b','c');
+      .containsExactlyInAnyOrder('a','b','c');
   }
 }

@@ -2,6 +2,7 @@ package internal.example.language;
 
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,5 +31,17 @@ public class PriorityQueueTests {
     while (!pq.isEmpty()) {
       assertThat(pq.remove()).isIn(1, 2, 3);
     }
+  }
+
+  @Test
+  public void shouldReturnReversedOrder() {
+    PriorityQueue<Integer> pq = new PriorityQueue<>(3, Collections.reverseOrder());
+    pq.add(1);
+    pq.add(3);
+    pq.add(2);
+
+    assertThat(pq.remove()).isEqualTo(3);
+    assertThat(pq.remove()).isEqualTo(2);
+    assertThat(pq.remove()).isEqualTo(1);
   }
 }
