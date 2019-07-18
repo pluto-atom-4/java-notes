@@ -58,6 +58,24 @@ public class ArraysTests {
   }
 
   @Test
+  public void shouldSortByNthWithComparingInt() {
+    int[][] nums = new int[][]{{1,2},{2,3},{0,2}};
+    Arrays.sort(nums, Comparator.comparingInt(a -> a[0]));
+    assertThat(nums[0]).containsExactly(0,2);
+    assertThat(nums[1]).containsExactly(1,2);
+    assertThat(nums[2]).containsExactly(2,3);
+  }
+
+  @Test
+  public void shouldSortWithLambda() {
+    int[][] nums = new int[][]{{1,2},{2,3},{0,2}};
+    Arrays.sort(nums, (a,b) -> a[0] - b[0]);
+    assertThat(nums[0]).containsExactly(0,2);
+    assertThat(nums[1]).containsExactly(1,2);
+    assertThat(nums[2]).containsExactly(2,3);
+  }
+
+  @Test
   public void shouldReturnShallowCopy() {
     String[] strings = {"abc", "def", "ghi"};
     List<String> list = Arrays.asList(strings);
@@ -78,4 +96,44 @@ public class ArraysTests {
     assertThat(strings[0]).isNotEqualTo("cba");
     assertThat(strings[0]).isEqualTo("abc");
   }
+
+  @Test
+  public void shouldReturnClonedArray() {
+    String[] strings = {"abc", "def", "ghi"};
+
+    String[] cloned = strings.clone();
+
+    cloned[0] = "xyz";
+
+    assertThat(strings[0]).isEqualTo("abc");
+    assertThat(cloned[0]).isEqualTo("xyz");
+  }
+
+  @Test
+  public void shouldReturnDeepCopiedArray() {
+    String[] strings = {"abc", "def", "ghi"};
+
+    String[] copied = Arrays.copyOf(strings, strings.length);
+
+    copied[0] = "xyz";
+
+    assertThat(strings[0]).isEqualTo("abc");
+    assertThat(copied[0]).isEqualTo("xyz");
+  }
+
+  @Test
+  public void shouldReturnShallowCopiedArray() {
+    String[] strings = {"abc", "def", "ghi"};
+
+    String[] copied = strings;
+
+    copied[0] = "xyz";
+
+    assertThat(strings[0]).isEqualTo("xyz");
+    assertThat(copied[0]).isEqualTo("xyz");
+  }
+
+
+
+
 }
