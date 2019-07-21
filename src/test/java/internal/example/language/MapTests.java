@@ -40,8 +40,11 @@ public class MapTests {
       'b', List.of("gef", "efg"));
 
     assertThat(map)
-      .containsValues(Arrays.asList("abc", "bca"))
-      .containsValues(Arrays.asList("gef", "efg"));
+      .containsValues(Arrays.asList("abc", "bca"),
+        Arrays.asList("gef", "efg"));
+
+    assertThat(map.values()).contains(Arrays.asList("abc", "bca"),
+      Arrays.asList("gef", "efg"));
   }
 
   @Test
@@ -55,6 +58,7 @@ public class MapTests {
   public void shouldReturnKeys() {
     Map<Character, Integer> map = Map.of('c', 1, 'b', 0, 'a', 3);
     assertThat(map.keySet()).hasSize(3)
-      .containsExactlyInAnyOrder('a','b','c');
+      .containsExactlyInAnyOrder('a', 'b', 'c');
   }
+
 }
