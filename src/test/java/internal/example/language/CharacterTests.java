@@ -47,4 +47,13 @@ public class CharacterTests {
     }
     assertThat(sb.toString()).isEqualTo("ABCD");
   }
+
+  @Test
+  public void shouldReturnTrueForCapital() {
+    Character captial = 'A';
+    Character nonCapital = 'a';
+
+    assertThat(Character.isUpperCase(captial)).isTrue();
+    assertThat(Character.isUpperCase(nonCapital)).isFalse();
+  }
 }
