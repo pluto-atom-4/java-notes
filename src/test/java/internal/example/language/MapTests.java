@@ -61,4 +61,26 @@ public class MapTests {
       .containsExactlyInAnyOrder('a', 'b', 'c');
   }
 
+  @Test
+  public void shouldReturnValueAfterExecutingPutMethod() {
+
+    // Creating an empty HashMap
+    HashMap<Integer, String> hashmap = new HashMap<Integer, String>();
+
+    // Mapping string values to int keys
+    hashmap.put(10, "HashMap");
+    hashmap.put(15, "4");
+    hashmap.put(25, "You");
+
+    // Displaying the HashMap
+    System.out.println("Initial Mappings are: " + hashmap);
+
+    // Inserting existing key along with new value
+    // return type of put is type of values i.e. String and containing the old value
+    assertThat(hashmap.put(10, "abc")).isEqualTo("HashMap");
+
+    // Inserting new key along with new value
+    // return type of put is type of values i.e. String ; since it is new key ,return value will be null
+    assertThat(hashmap.put(20, "abc")).isNull();
+  }
 }
