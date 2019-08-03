@@ -124,4 +124,11 @@ public class StringTests {
     assertThat(sb.toString()).isEqualTo("abc¥ǼΑΩ");
     assertThat(sb.toString().toCharArray()).containsExactly('a','b','c','¥','Ǽ','Α','Ω');
   }
+
+  @Test
+  public void shouldSplitStringByRegex() {
+    String[] strs = "+1+23-4*5/6".split("\\d+");
+    assertThat(strs).hasSize(5);
+    assertThat(strs).containsExactly("+","+","-","*","/");
+  }
 }
