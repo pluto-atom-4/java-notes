@@ -38,8 +38,16 @@ public class IntegerTests {
   }
 
   @Test
-  public void returnIntegerFromString() {
+  public void shouldReturnIntegerFromString() {
     String str = "26";
     assertThat(Integer.valueOf(str)).isInstanceOf(Integer.class);
+  }
+
+  @Test
+  public void shouldReturnCountOfBits() {
+    assertThat(Integer.bitCount(0b0)).isEqualTo(0);
+    assertThat(Integer.bitCount(0b1000)).isEqualTo(1);
+    assertThat(Integer.bitCount(0b1001)).isEqualTo(2);
+    assertThat(Integer.bitCount(0b1110)).isEqualTo(3);
   }
 }
