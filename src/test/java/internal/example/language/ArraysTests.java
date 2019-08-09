@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class ArraysTests {
 
@@ -133,7 +133,13 @@ public class ArraysTests {
     assertThat(copied[0]).isEqualTo("xyz");
   }
 
-
-
-
+  @Test
+  public void shouldThrowException() {
+    int[] nums = null;
+    assertThatThrownBy(() -> {
+      for (int num : nums) {
+        failBecauseExceptionWasNotThrown(NullPointerException.class);
+      }
+    }).isInstanceOf(NullPointerException.class);
+  }
 }
