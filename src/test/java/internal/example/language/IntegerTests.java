@@ -50,4 +50,9 @@ public class IntegerTests {
     assertThat(Integer.bitCount(0b1001)).isEqualTo(2);
     assertThat(Integer.bitCount(0b1110)).isEqualTo(3);
   }
+
+  @Test
+  public void shouldReturnReverse() {
+    assertThat(Integer.reverse(43261596)).isEqualTo(964176192);
+  }
 }
