@@ -8,11 +8,12 @@ import java.util.Comparator;
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 
 public class ListTests {
   @Test
   public void shouldReturnClonedList() {
-    List<Integer> original = new ArrayList<>(){{
+    List<Integer> original = new ArrayList<>() {{
       add(1);
       add(2);
       add(3);
@@ -34,7 +35,7 @@ public class ListTests {
 
   @Test
   public void shouldReturnIntArrayFromIntegerList() {
-    List<Integer> list = new ArrayList<>(){{
+    List<Integer> list = new ArrayList<>() {{
       add(1);
       add(2);
       add(3);
@@ -62,7 +63,7 @@ public class ListTests {
 
   @Test
   public void shouldIterateWithEnhancedForLoop() {
-    List<Integer> list = new ArrayList<>(){{
+    List<Integer> list = new ArrayList<>() {{
       add(1);
       add(2);
       add(3);
@@ -81,7 +82,7 @@ public class ListTests {
     list.add("Ab");
 
     list.sort(Comparator.comparingInt(String::length));
-    Assertions.assertThat(list).containsExactly("Ab", "ghi","cdef");
+    Assertions.assertThat(list).containsExactly("Ab", "ghi", "cdef");
   }
 
   @Test
@@ -92,5 +93,12 @@ public class ListTests {
     list.add("Ab");
 
     assertThat(list).contains("Ab");
+  }
+
+  @Test
+  public void shouldInstantiateImmutableList() {
+    List<Integer> list = List.of(1, 2, 3, 4);
+    assertThatThrownBy(() -> list.remove(1))
+      .isInstanceOf(UnsupportedOperationException.class);
   }
 }
