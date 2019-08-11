@@ -142,4 +142,10 @@ public class ArraysTests {
       }
     }).isInstanceOf(NullPointerException.class);
   }
+
+  @Test
+  public void shouldIterateExtededForLoop() {
+    for (int num: new int[]{1,2,3})
+      assertThat(num).isIn(1,2,3);
+  }
 }
