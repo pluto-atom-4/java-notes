@@ -3,6 +3,7 @@ package internal.example.language;
 import org.junit.Test;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.PriorityQueue;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,5 +44,26 @@ public class PriorityQueueTests {
     assertThat(pq.remove()).isEqualTo(3);
     assertThat(pq.remove()).isEqualTo(2);
     assertThat(pq.remove()).isEqualTo(1);
+  }
+
+  @Test
+  public void shouldOrderWithLambda() {
+    List<String> list = List.of("g1 act car", "ab1 off key dog", "a8 act zoo");
+    PriorityQueue<String> que =
+      new PriorityQueue<>((a, b) -> {
+        int res = a.split(" ", 2)[1]
+          .compareTo(
+            b.split(" ", 2)[1]);
+        System.out.println(res);
+        return res;
+      }
+      );
+
+    for (String s: list){
+      que.add(s);
+    }
+    while (!que.isEmpty()){
+      System.out.println(que.poll());
+    }
   }
 }

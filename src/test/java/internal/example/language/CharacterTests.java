@@ -56,4 +56,16 @@ public class CharacterTests {
     assertThat(Character.isUpperCase(captial)).isTrue();
     assertThat(Character.isUpperCase(nonCapital)).isFalse();
   }
+
+  @Test
+  public void shouldReturnTrueForDigit() {
+    char c = '1';
+    assertThat(Character.isDigit(c)).isTrue();
+  }
+
+  @Test
+  public void shouldReturnTrueForLetter() {
+    char c = 'a';
+    assertThat(Character.isLetter('a') && Character.isLowerCase('a')).isTrue();
+  }
 }
