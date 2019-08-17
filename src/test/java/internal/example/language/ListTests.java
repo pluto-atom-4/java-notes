@@ -101,4 +101,16 @@ public class ListTests {
     assertThatThrownBy(() -> list.remove(1))
       .isInstanceOf(UnsupportedOperationException.class);
   }
+
+  @Test
+  public void shouldConcatenateLists() {
+    List<String> first = List.of("ab c", "de f", "gh i");
+    List<String> second = List.of("ab 1", "de 2", "gh 3");
+    List<String> both = new ArrayList<>();
+    both.addAll(first);
+    both.addAll(second);
+    assertThat(both).hasSize(first.size() + second.size());
+    assertThat(both.get(2)).isEqualTo(first.get(2));
+    assertThat(both.get(3)).isEqualTo(second.get(0));
+  }
 }

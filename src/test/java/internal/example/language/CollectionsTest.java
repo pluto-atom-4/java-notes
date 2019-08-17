@@ -42,7 +42,5 @@ public class CollectionsTest {
 
     Collections.sort(list, (a, b) -> b.length()- a.length());
     assertThat(list).containsExactly("cdef", "ghi","Ab");
-
-
   }
 }

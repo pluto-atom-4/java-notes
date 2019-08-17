@@ -131,4 +131,11 @@ public class StringTests {
     assertThat(strs).hasSize(5);
     assertThat(strs).containsExactly("+","+","-","*","/");
   }
+
+  @Test
+  public void shouldSplitTwoStrings() {
+    assertThat("12:00 abcd efgh".split(" ", 2))
+      .hasSize(2)
+      .containsExactly("12:00", "abcd efgh");
+  }
 }
