@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -147,5 +148,33 @@ public class ArraysTests {
   public void shouldIterateExtededForLoop() {
     for (int num: new int[]{1,2,3})
       assertThat(num).isIn(1,2,3);
+  }
+
+  @Test
+  public void shouldReturnString() {
+    int[] nums = new int[] {1,2,3};
+    assertThat(Arrays.toString(nums)).isEqualTo("[1, 2, 3]");
+  }
+
+  @Test
+  public void shouldCollectAsList() {
+    String[] strs = new String[] {"red", "blue", "green"};
+
+    final List<String> list = Arrays.stream(strs)
+      .map(String::toUpperCase)
+      .collect(Collectors.toList());
+
+    assertThat(list).containsExactly("RED", "BLUE", "GREEN");
+  }
+
+  @Test
+  public void shouldCollectAsListForIntStream() {
+    int[] nums = new int[] {1,2,3};
+
+    final List<Integer> list = Arrays.stream(nums)
+      .map(n -> n * 2)
+      .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
+    assertThat(list).containsExactly(2,4,6);
   }
 }
