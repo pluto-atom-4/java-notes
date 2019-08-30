@@ -138,4 +138,10 @@ public class StringTests {
       .hasSize(2)
       .containsExactly("12:00", "abcd efgh");
   }
+
+  @Test
+  public void shouldReturnIntegerAsHashCode() {
+    String str = "abcde";
+    assertThat(str.hashCode()).isBetween(Integer.MIN_VALUE, Integer.MAX_VALUE);
+  }
 }
