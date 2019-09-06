@@ -38,9 +38,21 @@ public class IntegerTests {
   }
 
   @Test
+  public void shouldReturnIntFromCharacter() {
+    char c= '6';
+    assertThat(Character.getNumericValue(c)).isEqualTo(6);
+  }
+
+  @Test
   public void shouldReturnIntegerFromString() {
     String str = "26";
     assertThat(Integer.valueOf(str)).isInstanceOf(Integer.class);
+  }
+
+  @Test
+  public void returnPrimitiveIntFromString() {
+    String str = "26";
+    assertThat(Integer.parseInt(str)).isEqualTo(26);
   }
 
   @Test

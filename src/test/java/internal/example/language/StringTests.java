@@ -142,6 +142,7 @@ public class StringTests {
   @Test
   public void shouldReturnIntegerAsHashCode() {
     String str = "abcde";
+    System.out.println(str.hashCode());
     assertThat(str.hashCode()).isBetween(Integer.MIN_VALUE, Integer.MAX_VALUE);
   }
 }
