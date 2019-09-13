@@ -177,4 +177,15 @@ public class ArraysTests {
 
     assertThat(list).containsExactly(2,4,6);
   }
+
+  @Test
+  public void shouldStreamBoxingIntAsInteger() {
+    int[] nums = new int[] {1,2,3};
+
+    final List<Integer> list = Arrays.stream(nums)
+      .boxed()
+      .collect(Collectors.toList());
+
+    assertThat(list).containsExactly(1,2,3);
+  }
 }
