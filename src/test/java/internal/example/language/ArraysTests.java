@@ -77,6 +77,13 @@ public class ArraysTests {
   }
 
   @Test
+  public void shouldSortForIntArray() {
+    int[] nums = new int[] {2,4,7,1};
+    Arrays.sort(nums);
+    assertThat(nums).containsExactly(1, 2, 4, 7);
+  }
+
+  @Test
   public void shouldReturnShallowCopy() {
     String[] strings = {"abc", "def", "ghi"};
     List<String> list = Arrays.asList(strings);
@@ -145,7 +152,7 @@ public class ArraysTests {
   }
 
   @Test
-  public void shouldIterateExtededForLoop() {
+  public void shouldIterateExtendedForLoop() {
     for (int num: new int[]{1,2,3})
       assertThat(num).isIn(1,2,3);
   }

@@ -113,4 +113,13 @@ public class ListTests {
     assertThat(both.get(2)).isEqualTo(first.get(2));
     assertThat(both.get(3)).isEqualTo(second.get(0));
   }
+
+  @Test
+  public void shouldReturnIntArrayForIntegerList() {
+    List<Integer> list = List.of(1,2,3,4,5);
+
+    assertThat(list.stream().mapToInt(Integer::intValue).toArray())
+      .isInstanceOf(int[].class)
+      .containsExactly(1,2,3,4,5);
+  }
 }
