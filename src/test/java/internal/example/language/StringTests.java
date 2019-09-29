@@ -145,4 +145,13 @@ public class StringTests {
     System.out.println(str.hashCode());
     assertThat(str.hashCode()).isBetween(Integer.MIN_VALUE, Integer.MAX_VALUE);
   }
+
+  @Test
+  public void shouldReturnTrueForStartWithProvidedString() {
+    String str = "Jaaaava";
+
+    assertThat(str.startsWith("aa", 1)).isTrue();
+    assertThat(str.startsWith("aa", 2)).isTrue();
+    assertThat(str.startsWith("aa", 4)).isFalse();
+  }
 }
